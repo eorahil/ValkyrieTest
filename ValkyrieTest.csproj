@@ -50,13 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="StringI18nTest.cs" />
+    <Compile Include="Content\DictionaryI18nTest.cs" />
+    <Compile Include="Content\StringI18nTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\valkyrie\valkyrie.csproj">
-      <Project>{9284943d-f0fa-d56d-c85d-500f912e23e7}</Project>
-      <Name>valkyrie</Name>
+    <ProjectReference Include="..\Valkyrie\Valkyrie.csproj">
+      <Project>{ce7eabdd-ff1e-62ed-ce2f-496e80fda223}</Project>
+      <Name>Valkyrie</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Choose>
