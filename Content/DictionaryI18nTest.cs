@@ -5,10 +5,10 @@ namespace Assets.Scripts.Content
     [TestClass]
     public class DictionaryI18nTest
     {
-        DictionaryI18n sut;
+        private static DictionaryI18n sut;
 
-        [TestInitialize]
-        public void TestInitialize()
+        [ClassInitialize]
+        public static void ClassInitialize(TestContext context)
         {
             // Disble logger
             ValkyrieDebug.enabled = false;
@@ -21,7 +21,12 @@ namespace Assets.Scripts.Content
                 "MONSTER_THRALL_MOVE_01,The {0} moves 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest .,,,Das Monster „{0}“ bewegt sich um 2 Felder auf den nächsten Ermittler zu. Dann greift es den Ermittler mit der höchsten  auf seinem Feld an.,,,\"{0} przemieszcza się o 2 pola w kierunku najbliższego badacza. Następnie atakuje tego badacza na swoim polu, który ma największą .\",The {0} moves 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest ."};
 
             sut = new DictionaryI18n(file, DictionaryI18n.DEFAULT_LANG);
+        }
 
+        [TestInitialize]
+        public void TestInitialize_setDefaultLang()
+        {
+            sut.setCurrentLanguage(DictionaryI18n.DEFAULT_LANG);
         }
 
         [TestMethod]

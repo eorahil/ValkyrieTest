@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8586255D-673F-45E8-96E1-82E9E735952B}</ProjectGuid>
+    <ProjectGuid>{BE76057D-D5E5-4DB1-B2D2-C8E73A0430AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ValkyrieTest</RootNamespace>
