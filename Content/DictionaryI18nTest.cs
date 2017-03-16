@@ -32,7 +32,7 @@ namespace Assets.Scripts.Content
         [TestMethod]
         public void TestByakhee()
         {
-            StringI18n value;
+            EntryI18n value;
             sut.tryGetValue("MONSTER_BYAKHEE_ATTACK_01", out value);
             Assert.IsNotNull(value.getCurrentOrDefaultLanguageString());
         }
@@ -40,7 +40,7 @@ namespace Assets.Scripts.Content
         [TestMethod]
         public void TestDobleQuoted()
         {
-            StringI18n value;
+            EntryI18n value;
             sut.tryGetValue("ATTACK_FIREARM_VS_SPIRIT_03", out value);
             Assert.IsNotNull(value.getCurrentOrDefaultLanguageString());
         }
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Content
         [TestMethod]
         public void TestThrallMove()
         {
-            StringI18n value;
+            EntryI18n value;
             sut.tryGetValue("MONSTER_THRALL_MOVE_01", out value);
             Assert.IsNotNull(value.getCurrentOrDefaultLanguageString());
         }

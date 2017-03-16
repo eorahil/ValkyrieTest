@@ -5,7 +5,7 @@ using Assets.Scripts.Content;
 namespace Assets.Scripts.Content
 {
     [TestClass]
-    public class StringI18nTest
+    public class EntryI18nTest
     {
         private static DictionaryI18n dict;
 
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Content
         public void TestLangsString_LoadsLastLanguage()
         {
             dict.currentLanguage = 9;
-            StringI18n actual = new StringI18n(dict,DictionaryI18n.FFG_LANGS);
+            EntryI18n actual = new EntryI18n(dict,DictionaryI18n.FFG_LANGS);
             String actualString = actual.currentLanguageString;
             String expected = "Chinese";
             dict.setCurrentLanguage(DictionaryI18n.DEFAULT_LANG);
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Content
         public void TestCommaInsideQuotes_DoesntSplit()
         {
             String dictEntry = ".,\",\",,,,,,,,";
-            StringI18n actual = new StringI18n(dict,dictEntry);
+            EntryI18n actual = new EntryI18n(dict,dictEntry);
             String actualString = actual.currentLanguageString;
             String expected = ",";
             Assert.AreEqual(expected, actualString);
@@ -57,7 +57,7 @@ namespace Assets.Scripts.Content
         public void TestQuotesWithoutComma_DoesntSplit()
         {
             String dictEntry = ".,\"\",,,,,,,,";
-            StringI18n actual = new StringI18n(dict,dictEntry);
+            EntryI18n actual = new EntryI18n(dict,dictEntry);
             String actualString = actual.currentLanguageString;
             String expected = "";
             Assert.AreEqual(expected, actualString);
@@ -67,7 +67,7 @@ namespace Assets.Scripts.Content
         public void TestDifferentLangInserts_DoesntOverwriteOtherLangTexts()
         {
             String dictEntry = ".,,,,,,,,,";
-            StringI18n actual = new StringI18n(dict,dictEntry);
+            EntryI18n actual = new EntryI18n(dict,dictEntry);
             for (int nLang = 1; nLang < 10; nLang++)
             {
                 // First language
@@ -87,7 +87,7 @@ namespace Assets.Scripts.Content
         public void TestAshcanPete_ShowsCorrectText()
         {
             String dictEntry = "INVESTIGATOR_ASHCAN_PETE,\"\"\"Ashcan\"\" Pete\",Pete Cubo de Basura,\"\"\"Ashcan\"\" Pete\",„Ashcan“ Pete,“Ashcan” Pete,Peter “Chaminé”,Pete „Włóczęga”,ごみあさりのピート,“灰堆”皮特";
-            StringI18n actual = new StringI18n(dict,dictEntry);
+            EntryI18n actual = new EntryI18n(dict,dictEntry);
 
             Assert.AreEqual("\"Ashcan\" Pete", actual.currentLanguageString);
         }

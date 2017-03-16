@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="Content\DictionaryI18nTest.cs" />
     <Compile Include="Content\IniReadTest.cs" />
-    <Compile Include="Content\StringI18nTest.cs" />
+    <Compile Include="Content\EntryI18nTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
