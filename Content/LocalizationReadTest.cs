@@ -65,7 +65,7 @@ namespace Assets.Scripts.Content
         [TestMethod]
         public void TestKeyWithQstParams_replacesParamsCorrectly()
         {
-            StringKey keyWithParams = new StringKey("{val:MONSTER_THRALL_MOVE_01:{0}:{val:PARAMETER}}");
+            StringKey keyWithParams = new StringKey("{qst:MONSTER_THRALL_MOVE_01:{0}:{qst:PARAMETER}}");
             string translationWithParams = keyWithParams.Translate();
             Assert.IsTrue(translationWithParams.Contains("The parameter qst moves qst"));
         }
@@ -73,7 +73,7 @@ namespace Assets.Scripts.Content
         [TestMethod]
         public void TestKeyWithMixedParams_replacesParamsCorrectly()
         {
-            StringKey keyWithParams = new StringKey("{ffg:MONSTER_THRALL_MOVE_01:{0}:{val:PARAMETER}}");
+            StringKey keyWithParams = new StringKey("{ffg:MONSTER_THRALL_MOVE_01:{0}:{qst:PARAMETER}}");
             string translationWithParams = keyWithParams.Translate();
             Assert.IsTrue(translationWithParams.Contains("The parameter qst moves 2"));
         }
