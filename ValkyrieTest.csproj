@@ -36,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="ValkyrieTools">
+      <HintPath>..\Valkyrie\unity\Assets\Plugins\ValkyrieTools.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,14 +60,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Valkyrie\Valkyrie.csproj">
-      <Project>{ce7eabdd-ff1e-62ed-ce2f-496e80fda223}</Project>
-      <Name>Valkyrie</Name>
-      <Private>True</Private>
-    </ProjectReference>
+    <None Include="resources\testSample.ini" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\testSample.ini" />
+    <ProjectReference Include="..\Valkyrie\unity\unity.csproj">
+      <Project>{542E94B8-9F48-83EE-3A35-B6C8F15311F3}</Project>
+      <Name>unity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ValkyrieTools;
 
 namespace Assets.Scripts.Content
 {
@@ -22,7 +23,7 @@ namespace Assets.Scripts.Content
                 "PARAMETER,parameter,parametro,,,,,",
                 "CUTSCENE_1_PROLOGUE,\"Your adventure begins with a note shoved under your door. Scrawled in large, unpracticed letters: \\n\\n[i]Hey stupid heroes! \\n\\nEverything is terrible! The Lair of All Goblins has been overrun by wicked things that dumb heroes like you always fight. You must come here, beat them up, and break their things to stop the unthinkable: the end of all goblins! You obviously don’t know where the Lair of All Goblins is, so I drew a map. Don’t lose it!\\n\\nYour fearsome master, \\n\\nSplig\\n\\n[/i]The map is rough but legible, leading to a place you clearly recognize as the Parigreth ruins. Having nothing better to do, you gather your gear and depart.\""};
 
-            sut = new DictionaryI18n(file, DictionaryI18n.DEFAULT_LANG);
+            sut = new DictionaryI18n(file, DictionaryI18n.DEFAULT_LANG, DictionaryI18n.DEFAULT_LANG);
         }
 
         [TestInitialize]

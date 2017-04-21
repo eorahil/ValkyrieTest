@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Assets.Scripts.Content;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ValkyrieTools;
 
 namespace Assets.Scripts.Content
 {
@@ -21,8 +23,7 @@ namespace Assets.Scripts.Content
                 "PARAMETER,parameter,parametro,,,,,",
                 "CUTSCENE_1_PROLOGUE,\"Your adventure begins with a note shoved under your door. Scrawled in large, unpracticed letters: \\n\\n[i]Hey stupid heroes! \\n\\nEverything is terrible! The Lair of All Goblins has been overrun by wicked things that dumb heroes like you always fight. You must come here, beat them up, and break their things to stop the unthinkable: the end of all goblins! You obviously don’t know where the Lair of All Goblins is, so I drew a map. Don’t lose it!\\n\\nYour fearsome master, \\n\\nSplig\\n\\n[/i]The map is rough but legible, leading to a place you clearly recognize as the Parigreth ruins. Having nothing better to do, you gather your gear and depart.\""};
 
-            LocalizationRead.ffgDict = new DictionaryI18n(fileffg, DictionaryI18n.DEFAULT_LANG);
-            LocalizationRead.ffgDict.setCurrentLanguage(DictionaryI18n.DEFAULT_LANG);
+            LocalizationRead.ffgDict = new DictionaryI18n(fileffg, DictionaryI18n.DEFAULT_LANG, DictionaryI18n.DEFAULT_LANG);
 
             // Sample dictionary
             string[] fileval = new string[3]
@@ -30,17 +31,19 @@ namespace Assets.Scripts.Content
                 "MONSTER_THRALL_MOVE_01,The {0} moves val 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest .,,,Das Monster „{0}“ bewegt sich um 2 Felder auf den nächsten Ermittler zu. Dann greift es den Ermittler mit der höchsten  auf seinem Feld an.,,,\"{0} przemieszcza się o 2 pola w kierunku najbliższego badacza. Następnie atakuje tego badacza na swoim polu, który ma największą .\",The {0} moves 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest .",
                 "PARAMETER,parameter val,parametro,,,,,"};
 
-            LocalizationRead.valkyrieDict = new DictionaryI18n(fileval, DictionaryI18n.DEFAULT_LANG);
-            LocalizationRead.valkyrieDict.setCurrentLanguage(DictionaryI18n.DEFAULT_LANG);
+            LocalizationRead.valkyrieDict = new DictionaryI18n(fileval, DictionaryI18n.DEFAULT_LANG, DictionaryI18n.DEFAULT_LANG);
 
             // Sample dictionary
-            string[] fileqst = new string[3]
+            string[] fileqst = new string[7]
                 {DictionaryI18n.FFG_LANGS,
                 "MONSTER_THRALL_MOVE_01,The {0} moves qst 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest .,,,Das Monster „{0}“ bewegt sich um 2 Felder auf den nächsten Ermittler zu. Dann greift es den Ermittler mit der höchsten  auf seinem Feld an.,,,\"{0} przemieszcza się o 2 pola w kierunku najbliższego badacza. Następnie atakuje tego badacza na swoim polu, który ma największą .\",The {0} moves 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest .",
-                "PARAMETER,parameter qst,parametro,,,,,"};
+                "PARAMETER,parameter qst,parametro,,,,,",
+                "loop1,\"{qst:loop1}\",\"{qst:loop1}\",,,,,",
+                "loop21,\"{qst:loop22}\",\"{qst:loop22}\",,,,,",
+                "loop22,\"{qst:loop23}\",\"{qst:loop23}\",,,,,",
+                "loop23,\"{qst:loop21}\",\"{qst:loop21}\",,,,,"};
 
-            LocalizationRead.scenarioDict = new DictionaryI18n(fileqst, DictionaryI18n.DEFAULT_LANG);
-            LocalizationRead.scenarioDict.setCurrentLanguage(DictionaryI18n.DEFAULT_LANG);
+            LocalizationRead.scenarioDict = new DictionaryI18n(fileqst, DictionaryI18n.DEFAULT_LANG, DictionaryI18n.DEFAULT_LANG);
 
             // Default language english
             LocalizationRead.changeCurrentLangTo(DictionaryI18n.DEFAULT_LANG);
@@ -76,6 +79,24 @@ namespace Assets.Scripts.Content
             StringKey keyWithParams = new StringKey("{ffg:MONSTER_THRALL_MOVE_01:{0}:{qst:PARAMETER}}");
             string translationWithParams = keyWithParams.Translate();
             Assert.IsTrue(translationWithParams.Contains("The parameter qst moves 2"));
+        }
+
+        [TestMethod]
+        public void TestKeyWithLoopInside_returnsKey()
+        {
+            const string LOOP_KEY = "{qst:loop1}";
+            StringKey keyWithParams = new StringKey(LOOP_KEY);
+            string translation = keyWithParams.Translate();
+            Assert.IsTrue(translation.Equals(LOOP_KEY));
+        }
+
+        [TestMethod]
+        public void TestKeyWithChainedLoopInside_returnsKey()
+        {
+            const string LOOP_KEY = "{qst:loop21}";
+            StringKey keyWithParams = new StringKey(LOOP_KEY);
+            string translation = keyWithParams.Translate();
+            Assert.IsTrue(translation.Contains("{qst:loop2"));
         }
     }
 }

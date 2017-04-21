@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Assets.Scripts.Content;
+using ValkyrieTools;
 
 namespace Assets.Scripts.Content
 {
@@ -22,7 +23,7 @@ namespace Assets.Scripts.Content
                 "ATTACK_FIREARM_VS_SPIRIT_03,\"You fire at the specter. It does not work. Instead, you focus your mind and scream at it, \"\"Get out!\"\" (+1). The monster suffers damage equal to your test result.\",Disparas al espectro. No sirve de nada. Decides cambiar de estrategia; te concentras y exhortas a la aparición a que se marche (+1). El monstruo sufre tanto Daño como el resultado de tu tirada.,\"Vous tirez sur le spectre, en pure perte. Vous décidez alors de vous concentrer et de hurler : « Fiche le camp ! » (+1). Le monstre subit des dégâts égaux au résultat de votre test.\",\"Du feuerst auf das Gespenst. Als es nicht reagiert, konzentrierst du dich und schreist: „Weiche!“ (+1). Das Monster erleidet Schaden in Höhe deines Probenergebnisses.\",\"Apri il fuoco contro lo spettro ma i colpi non hanno nessun effetto, quindi cerchi di concentrarti sulla creatura urlandole di sparire (+1). Il mostro subisce danni pari al risultato della tua prova.\",\"Você atira contra o espectro. Nada acontece. Em vez disso, você concentra sua mente e grita: “Saia daqui!” (+1). O monstro sofre dano igual ao resultado do seu teste.\",\"Strzelasz do widma. To nie działa. Zamiast tego koncentrujesz się i krzyczysz w jego kierunku, „Przepadnij!” (+1). Potwór przyjmuje obrażenia równe wynikowi twojego testu.\",君はその霊を撃ったが、まるで効果はなかった。そこで君は、精神を集中して、「悪霊退散！」と叫んだ(+1)。；モンスターは、この判定の成功数に等しいダメージを受ける。,你向鬼魂開槍，但是並不起作用。於是，你全神貫注地朝它大喊道：“走開！”（+1）。怪物受到等同於檢定結果的傷害",
                 "MONSTER_THRALL_MOVE_01,The {0} moves 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest .,,,Das Monster „{0}“ bewegt sich um 2 Felder auf den nächsten Ermittler zu. Dann greift es den Ermittler mit der höchsten  auf seinem Feld an.,,,\"{0} przemieszcza się o 2 pola w kierunku najbliższego badacza. Następnie atakuje tego badacza na swoim polu, który ma największą .\",The {0} moves 2 spaces toward the nearest investigator. Then it attacks the investigator in its space with the highest ."};
 
-            dict = new DictionaryI18n(file, DictionaryI18n.DEFAULT_LANG);
+            dict = new DictionaryI18n(file, DictionaryI18n.DEFAULT_LANG, DictionaryI18n.DEFAULT_LANG);
             
         }
 
