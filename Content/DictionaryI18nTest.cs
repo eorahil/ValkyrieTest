@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Text;
 using ValkyrieTools;
 
 namespace Assets.Scripts.Content
@@ -62,7 +64,7 @@ namespace Assets.Scripts.Content
             EntryI18n value;
             sut.tryGetValue("CUTSCENE_1_PROLOGUE", out value);
             System.Diagnostics.Debug.WriteLine(value.getCurrentOrDefaultLanguageString());
-            Assert.IsTrue(value.getCurrentOrDefaultLanguageString().Contains(System.Environment.NewLine));
+            Assert.IsTrue(value.getCurrentOrDefaultLanguageString().Contains("\n"));
         }
 
         [TestMethod]
@@ -75,6 +77,51 @@ namespace Assets.Scripts.Content
         }
 
 
+        [TestMethod]
+        public void TestSerializedDictionariesJoinsCorrectly()
+        {
+            Dictionary<string,List<string>> dictionaries = sut.SerializeMultiple();
 
+            DictionaryI18n partialLocalizationDict;
+            DictionaryI18n localizationDict = null;
+
+            foreach (string language in dictionaries.Keys)
+            {
+                partialLocalizationDict = new DictionaryI18n(dictionaries[language].ToArray(), language, language);
+
+                if (localizationDict == null)
+                {
+                    localizationDict = partialLocalizationDict;
+                }
+                else
+                {
+                    localizationDict.AddRaw(partialLocalizationDict);
+                }
+            }
+
+            sut.setDefaultLanguage(DictionaryI18n.DEFAULT_LANG);
+            localizationDict.setDefaultLanguage(DictionaryI18n.DEFAULT_LANG);
+            sut.flushRaw();
+            localizationDict.flushRaw();
+            // Compare languages
+            for (int langPos = 0; langPos < localizationDict.getLanguages().Length; langPos++)
+            {
+                if (localizationDict.getLanguages()[langPos] != sut.getLanguages()[langPos])
+                {
+                    Assert.Fail(new StringBuilder()
+                        .Append("Languages position don't match: Position:")
+                        .Append(langPos)
+                        .Append(" SourceLang:")
+                        .Append(sut.getLanguages()[langPos])
+                        .Append(" TargetLang:")
+                        .Append(localizationDict.getLanguages()[langPos])
+                        .ToString());
+                }
+
+                sut.setCurrentLanguage(localizationDict.getLanguages()[langPos]);
+                localizationDict.setCurrentLanguage(localizationDict.getLanguages()[langPos]);
+
+            }
+        }
     }
 }
