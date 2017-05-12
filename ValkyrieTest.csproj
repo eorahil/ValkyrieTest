@@ -56,6 +56,7 @@
     <Compile Include="Content\DictionaryI18nTest.cs" />
     <Compile Include="Content\IniReadTest.cs" />
     <Compile Include="Content\EntryI18nTest.cs" />
+    <Compile Include="Content\LocalizationReadDeleteTest.cs" />
     <Compile Include="Content\LocalizationReadTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using ValkyrieTools;
 namespace Assets.Scripts.Content
 {
     [TestClass]
-    public class LocalizationReadTest
+    public class LocalizationReadDeleteTest
     {
 
         [ClassInitialize]
@@ -51,51 +51,8 @@ namespace Assets.Scripts.Content
         [TestMethod]
         public void TestKeyWithFfgParams_replacesParamsCorrectly()
         {
-            StringKey keyWithParams = new StringKey("{ffg:MONSTER_THRALL_MOVE_01:{0}:{ffg:PARAMETER}}");
-            string translationWithParams = keyWithParams.Translate();
-            Assert.IsTrue(translationWithParams.Contains("The parameter moves"));
         }
 
-        [TestMethod]
-        public void TestKeyWithValParams_replacesParamsCorrectly()
-        {
-            StringKey keyWithParams = new StringKey("{val:MONSTER_THRALL_MOVE_01:{0}:{val:PARAMETER}}");
-            string translationWithParams = keyWithParams.Translate();
-            Assert.IsTrue(translationWithParams.Contains("The parameter val moves val"));
-        }
 
-        [TestMethod]
-        public void TestKeyWithQstParams_replacesParamsCorrectly()
-        {
-            StringKey keyWithParams = new StringKey("{qst:MONSTER_THRALL_MOVE_01:{0}:{qst:PARAMETER}}");
-            string translationWithParams = keyWithParams.Translate();
-            Assert.IsTrue(translationWithParams.Contains("The parameter qst moves qst"));
-        }
-
-        [TestMethod]
-        public void TestKeyWithMixedParams_replacesParamsCorrectly()
-        {
-            StringKey keyWithParams = new StringKey("{ffg:MONSTER_THRALL_MOVE_01:{0}:{qst:PARAMETER}}");
-            string translationWithParams = keyWithParams.Translate();
-            Assert.IsTrue(translationWithParams.Contains("The parameter qst moves 2"));
-        }
-
-        [TestMethod]
-        public void TestKeyWithLoopInside_returnsKey()
-        {
-            const string LOOP_KEY = "{qst:loop1}";
-            StringKey keyWithParams = new StringKey(LOOP_KEY);
-            string translation = keyWithParams.Translate();
-            Assert.IsTrue(translation.Equals(LOOP_KEY));
-        }
-
-        [TestMethod]
-        public void TestKeyWithChainedLoopInside_returnsKey()
-        {
-            const string LOOP_KEY = "{qst:loop21}";
-            StringKey keyWithParams = new StringKey(LOOP_KEY);
-            string translation = keyWithParams.Translate();
-            Assert.IsTrue(translation.Contains("{qst:loop2"));
-        }
     }
 }
