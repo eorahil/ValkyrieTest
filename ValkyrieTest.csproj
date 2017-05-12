@@ -66,6 +66,7 @@
     <ProjectReference Include="..\Valkyrie\unity\unity.csproj">
       <Project>{542E94B8-9F48-83EE-3A35-B6C8F15311F3}</Project>
       <Name>unity</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Choose>
